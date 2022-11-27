@@ -47,7 +47,8 @@ export const CardTextBody = styled.p`
   padding-top: 0.4em;
 `;
 
-export const CardButton = styled.a`
+export const CardButton = styled.button`
+  border: none;
   background: #0f52ba;
   border-radius: 0 0 8px 8px;
   cursor: pointer;
@@ -57,7 +58,7 @@ export const CardButton = styled.a`
   justify-content: center;
 `;
 
-export const LinkText = styled.p`
+export const LinkText = styled.a`
   background: #0f52ba;
   color: #fff;
   padding: 0.6em;

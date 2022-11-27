@@ -18,7 +18,17 @@ interface Props {
 
 export function Carrinho({ modal, togleModal }: Props) {
   const cart = useSelector((state) => state.cart.products);
-  
+
+  const getTotal = () => {
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      totalQuantity += item.quantity;
+      totalPrice += item.price * item.quantity;
+    });
+    return { totalPrice, totalQuantity };
+  };
+
   if (!modal) {
     return null;
   }
@@ -31,21 +41,20 @@ export function Carrinho({ modal, togleModal }: Props) {
       </CarrinhoTitulo>
       <ContainerCardCarrinho>
         {cart.map((cart) => (
-              <CardCarrinho
-                key={cart.index}
-                id={cart.id}
-                name={cart.name}
-                photo={cart.photo}
-                price={cart.price}
-              />
-            ))
-          }
+          <CardCarrinho
+            key={cart.index}
+            id={cart.id}
+            name={cart.name}
+            photo={cart.photo}
+            price={cart.price}
+          />
+        ))}
       </ContainerCardCarrinho>
 
       <WrapperPrice>
         <CarrinhoPreco>
           <Text>Total:</Text>
-          <Text>R$798</Text>
+          <Text>{getTotal().totalPrice}</Text>
         </CarrinhoPreco>
         <Link>Finalizar compra</Link>
       </WrapperPrice>
