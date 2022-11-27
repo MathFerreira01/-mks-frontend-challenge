@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Card } from "../Card";
 import { Container } from "./styles";
+import { api } from "../../services/api";
 
 export function CardList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
+    api
       .get(
         "https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=DESC"
       )
