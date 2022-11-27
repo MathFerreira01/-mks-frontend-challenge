@@ -1,14 +1,21 @@
-import {  createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { CardProps } from "../interface/interfaceCard";
+
+interface IState {
+  products: CardProps[];
+}
+
+const initialState: IState = {
+  products: [],
+};
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    products: [],
-  },
+  initialState,
   reducers: {
     addToCart: (state, action) => {
       const itemInCart = state.products.find(
-        (item: { id: number }) => item.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
       if (itemInCart) {
         itemInCart.quantity++;
@@ -17,24 +24,20 @@ const cartSlice = createSlice({
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.products.find(
-        (item: { id: number }) => item.id === action.payload
-      );
-      item.quantity++;
+      const item = state.products.find((item) => item.id === action.payload);
+      item ? item.quantity++ : null;
     },
     decrementQuantity: (state, action) => {
-      const item = state.products.find(
-        (item: { id: number }) => item.id === action.payload
-      );
-      if (item.quantity === 1) {
+      const item = state.products.find((item) => item.id === action.payload);
+      if (item && item.quantity === 1) {
         item.quantity = 1;
       } else {
-        item.quantity--;
+        item ? item.quantity-- : null;
       }
     },
     removeItem: (state, action) => {
       const removeItem = state.products.filter(
-        (item : {id: number}) => item.id !== action.payload
+        (item) => item.id !== action.payload
       );
       state.products = removeItem;
     },

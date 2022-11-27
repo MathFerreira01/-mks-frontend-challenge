@@ -26,7 +26,7 @@ export function CardCarrinho({ index, id, name, photo, price, quantity }: CardPr
         <span>Qtd:</span>
         <WrapperQtd>
           <button
-            disabled={cart.quantity === 1}
+            disabled={cart[0].quantity === 1}
             onClick={() => dispatch(decrementQuantity(id))}
           >
             -
