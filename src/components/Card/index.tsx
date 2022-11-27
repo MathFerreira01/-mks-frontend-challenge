@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
+import { CardProps } from '../../interface/interfaceCard'
+
+import Path from "../../images/shopping-bag.svg";
 
 import {
   CardWrapper,
@@ -12,10 +15,6 @@ import {
   CardButton,
   LinkText,
 } from "./styles";
-
-import Path from "../../images/shopping-bag.svg";
-
-import { CardProps } from '../../interface/interfaceCard'
 
 export function Card({
   id,

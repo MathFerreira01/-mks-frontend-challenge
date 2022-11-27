@@ -1,5 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, incrementQuantity, decrementQuantity } from "../../store/cartSlice";
+
+import { CardProps } from "../../interface/interfaceCard";
+import { RootState } from "../../store/store";
+
+import {
+  removeItem,
+  incrementQuantity,
+  decrementQuantity,
+} from "../../store/cartSlice";
 
 import {
   Container,
@@ -11,15 +19,19 @@ import {
   CardCarrinhoDelete,
 } from "./styles";
 
-import { CardProps } from "../../interface/interfaceCard";
-import { RootState } from "../../store/store";
-
-export function CardCarrinho({ index, id, name, photo, price, quantity }: CardProps) {
+export function CardCarrinho({
+  id,
+  name,
+  photo,
+  price,
+  quantity,
+}: CardProps) {
+  
   const cart = useSelector((state: RootState) => state.cart.products);
   const dispatch = useDispatch();
 
   return (
-    <Container key={index}>
+    <Container>
       <CardCarrinhoImage src={photo} alt="" />
       <CardCarrinhoTexto>{name}</CardCarrinhoTexto>
       <CardCarrinhoQtd>

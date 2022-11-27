@@ -1,24 +1,22 @@
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { Carrinho } from "../Carrinho";
+import { RootState } from "../../store/store";
+import loja from "../../images/Vector (9).svg";
 
 import { Container, ContainerTitulo, ContainerCarrinho } from "./styles";
 
-import loja from "../../images/Vector (9).svg";
-
-import { Carrinho } from "../Carrinho";
-import { RootState } from "../../store/store";
-
 export function Header() {
-  const cart = useSelector((state: RootState) => state.cart.products)
+  const cart = useSelector((state: RootState) => state.cart.products);
   const [modal, setModal] = useState(false);
 
   const getTotalQuantity = () => {
-    let total = 0
-    cart.forEach(item => {
-      total += item.quantity
-    })
-    return total
-  }
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity;
+    });
+    return total;
+  };
 
   const togleModal = () => {
     setModal(!modal);

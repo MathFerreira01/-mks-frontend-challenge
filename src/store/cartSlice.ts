@@ -17,22 +17,16 @@ const cartSlice = createSlice({
       const itemInCart = state.products.find(
         (item) => item.id === action.payload.id
       );
-      if (itemInCart) {
-        itemInCart.quantity++;
-      } else {
-        state.products.push({ ...action.payload, quantity: 1 });
-      }
+        itemInCart ? itemInCart.quantity++ : state.products.push({ ...action.payload, quantity: 1 });
     },
     incrementQuantity: (state, action) => {
       const item = state.products.find((item) => item.id === action.payload);
       item ? item.quantity++ : null;
     },
     decrementQuantity: (state, action) => {
-      const item = state.products.find((item) => item.id === action.payload);
-      if (item && item.quantity === 1) {
-        item.quantity = 1;
-      } else {
-        item ? item.quantity-- : null;
+      const item = state.products.find(item => item.id === action.payload);
+      if (item) {
+        item.quantity = item.quantity === 1 ? 1 : item.quantity -1;
       }
     },
     removeItem: (state, action) => {
