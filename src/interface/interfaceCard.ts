@@ -1,4 +1,5 @@
 export interface CardProps {
+    index: React.Key;
     id: number;
     name: string;
     brand: string;
