@@ -44,6 +44,7 @@ export const WrapperPrice = styled.div`
 
 export const ContainerCardCarrinho = styled.div`
   padding: 1.5em;
+  overflow-y: auto;
 `;
 
 export const CarrinhoPreco = styled.div`

@@ -14,7 +14,8 @@ import {
 } from "./styles";
 
 import Path from "../../images/shopping-bag.svg";
-import { CardProps } from "../../interface/Card";
+
+import { CardProps } from '../../interface/interfaceCard'
 
 export function Card({
   id,
@@ -38,11 +39,11 @@ export function Card({
         <CardTextBody>{description}</CardTextBody>
       </CardTextWrapper>
 
-      <CardButton>
+      <CardButton
+        onClick={() => dispatch(addToCart({ index, id, photo, name, price }))}
+      >
         <img src={Path} />
-        <LinkText onClick={() => dispatch(addToCart({index, id, photo, name, price }))}>
-          COMPRAR
-        </LinkText>
+        <LinkText>COMPRAR</LinkText>
       </CardButton>
     </CardWrapper>
   );

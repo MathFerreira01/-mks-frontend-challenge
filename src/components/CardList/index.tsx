@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Card } from "../Card";
 import { Container } from "./styles";
 import { api } from "../../services/api";
+import { CardProps } from "../../interface/interfaceCard";
 
 export function CardList() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<CardProps[]>([]);
 
   useEffect(() => {
     api
@@ -24,6 +25,9 @@ export function CardList() {
           price={product.price}
           description={product.description}
           photo={product.photo}
+          index={""}
+          brand={product.brand}
+          quantity={0}
         />
       ))}
     </Container>

@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, selectCount } from "../../store/counterSlice";
-import { removeItem } from "../../store/cartSlice";
+import { removeItem, incrementQuantity, decrementQuantity } from "../../store/cartSlice";
 
 import {
   Container,
@@ -13,23 +12,29 @@ import {
 } from "./styles";
 
 import { CardProps } from "../../interface/interfaceCard";
+import { RootState } from "../../store/store";
 
-export function CardCarrinho({ index, id, name, photo, price }: CardProps) {
-  const count = useSelector(selectCount);
+export function CardCarrinho({ index, id, name, photo, price, quantity }: CardProps) {
+  const cart = useSelector((state: RootState) => state.cart.products);
   const dispatch = useDispatch();
 
   return (
-    <Container key={id}>
+    <Container key={index}>
       <CardCarrinhoImage src={photo} alt="" />
       <CardCarrinhoTexto>{name}</CardCarrinhoTexto>
       <CardCarrinhoQtd>
         <span>Qtd:</span>
         <WrapperQtd>
-          <button onClick={() => dispatch(decrement())}>-</button>
+          <button
+            disabled={cart.quantity === 1}
+            onClick={() => dispatch(decrementQuantity(id))}
+          >
+            -
+          </button>
           <hr />
-          <span>{count}</span>
+          <span>{quantity}</span>
           <hr />
-          <button onClick={() => dispatch(increment())}>+</button>
+          <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
         </WrapperQtd>
       </CardCarrinhoQtd>
       <CardCarrinhoPrice>{price}</CardCarrinhoPrice>

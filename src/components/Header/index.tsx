@@ -6,9 +6,10 @@ import { Container, ContainerTitulo, ContainerCarrinho } from "./styles";
 import loja from "../../images/Vector (9).svg";
 
 import { Carrinho } from "../Carrinho";
+import { RootState } from "../../store/store";
 
 export function Header() {
-  const cart = useSelector((state) => state.cart.products)
+  const cart = useSelector((state: RootState) => state.cart.products)
   const [modal, setModal] = useState(false);
 
   const getTotalQuantity = () => {

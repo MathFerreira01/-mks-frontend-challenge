@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import { CardCarrinho } from "../CardCarrinho";
 
 import {
@@ -17,7 +18,7 @@ interface Props {
 }
 
 export function Carrinho({ modal, togleModal }: Props) {
-  const cart = useSelector((state) => state.cart.products);
+  const cart = useSelector((state: RootState) => state.cart.products);
 
   const getTotal = () => {
     let totalQuantity = 0;
@@ -47,6 +48,10 @@ export function Carrinho({ modal, togleModal }: Props) {
             name={cart.name}
             photo={cart.photo}
             price={cart.price}
+            quantity={cart.quantity}
+            index={""}
+            brand={cart.brand}
+            description={cart.description}
           />
         ))}
       </ContainerCardCarrinho>
