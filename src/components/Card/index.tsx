@@ -18,7 +18,6 @@ import {
 
 export function Card({
   id,
-  index,
   name,
   brand,
   description,
@@ -28,7 +27,7 @@ export function Card({
   const dispatch = useDispatch();
 
   return (
-    <CardWrapper key={index}>
+    <CardWrapper key={id}>
       <CardImage src={photo} />
       <CardTextWrapper>
         <CardContainerText>
@@ -39,7 +38,7 @@ export function Card({
       </CardTextWrapper>
 
       <CardButton
-        onClick={() => dispatch(addToCart({ index, id, photo, name, price }))}
+        onClick={() => dispatch(addToCart({  id, photo, name, price }))}
       >
         <img src={Path} />
         <LinkText>COMPRAR</LinkText>
