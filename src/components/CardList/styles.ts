@@ -7,3 +7,4 @@ export const Container = styled.div`
   padding-top: 10%;
   justify-content: center;
 `;
+

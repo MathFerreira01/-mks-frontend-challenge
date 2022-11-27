@@ -8,13 +8,15 @@ export function CardList() {
   const [products, setProducts] = useState<CardProps[]>([]);
 
   useEffect(() => {
-    const getProducts = async () => {
-      const apiReturn = await getProductsServices();
-      if (!apiReturn.error) {
-        setProducts(apiReturn);
-      } 
-    };
-    getProducts();
+    setTimeout(() => {
+      const getProducts = async () => {
+        const apiReturn = await getProductsServices();
+        if (!apiReturn.error) {
+          setProducts(apiReturn);
+        }
+      };
+      getProducts();
+    }, 1000);
   }, []);
 
   return (
