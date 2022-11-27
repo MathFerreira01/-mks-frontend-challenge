@@ -27,7 +27,7 @@ export function Card({
   const dispatch = useDispatch();
 
   return (
-    <CardWrapper key={id}>
+    <CardWrapper>
       <CardImage src={photo} />
       <CardTextWrapper>
         <CardContainerText>

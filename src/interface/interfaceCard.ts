@@ -1,5 +1,4 @@
 export interface CardProps {
-    key: number;
     id: number;
     name: string;
     brand: string;

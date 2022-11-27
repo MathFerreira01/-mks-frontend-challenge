@@ -41,9 +41,9 @@ export function Carrinho({ modal, togleModal }: Props) {
         <a onClick={togleModal}>X</a>
       </CarrinhoTitulo>
       <ContainerCardCarrinho>
-        {cart.map((cart) => (
+        {cart.map((cart, index) => (
           <CardCarrinho
-            key={cart.id}
+            key={index}
             id={cart.id}
             name={cart.name}
             photo={cart.photo}

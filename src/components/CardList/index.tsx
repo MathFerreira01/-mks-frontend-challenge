@@ -19,9 +19,9 @@ export function CardList() {
 
   return (
     <Container>
-      {products.map((product) => (
+      {products.map((product, index) => (
         <Card
-          key={product.id}
+          key={index}
           id={product.id}
           name={product.name}
           price={product.price}
